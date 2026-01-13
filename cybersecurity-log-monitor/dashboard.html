@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cybersecurity Alert Dashboard</title>
+    <style>
+        body { font-family: Arial; background: #0f172a; color: white; }
+        h1 { text-align: center; }
+        table { width: 90%; margin: auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #334155; }
+        th { background: #1e293b; }
+        .HIGH { color: orange; }
+        .CRITICAL { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h1>🚨Abhay's Cybersecurity Alert Dashboard</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>IP Address</th>
+            <th>Alert Type</th>
+            <th>Severity</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody id="alerts"></tbody>
+</table>
+
+<script>
+fetch("http://localhost:8000/alerts")
+    .then(response => response.json())
+    .then(data => {
+        const table = document.getElementById("alerts");
+        data.forEach(alert => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${alert.ip}</td>
+                <td>${alert.type}</td>
+                <td class="${alert.severity}">${alert.severity}</td>
+                <td>${alert.description}</td>
+            `;
+            table.appendChild(row);
+        });
+    });
+</script>
+
+</body>
+</html>
