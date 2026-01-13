@@ -37,3 +37,7 @@ An end-to-end cybersecurity project that analyzes authentication logs, detects s
 ### 1️⃣ Run the analyzer
 ```bash
 python analyzer.py
+### 2️⃣ Start the backend server
+python server.py
+### 3️⃣ Open the dashboard
+http://localhost:8000
